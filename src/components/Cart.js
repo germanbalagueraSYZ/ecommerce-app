@@ -3,30 +3,30 @@ import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 const CartContainer = styled.div`
-    padding: 20px;
+  padding: 20px;
 `;
 
 const Product = styled.div`
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin: 10px 0;
-    border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 4px;
 `;
 
 const Title = styled.h2`
-    color: #333;
+  color: #333;
 `;
 
 const Button = styled.button`
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    &:hover {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  &:hover {
     background-color: #0056b3;
-    }
+  }
 `;
 
 const Cart = () => {
