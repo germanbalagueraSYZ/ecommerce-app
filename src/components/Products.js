@@ -37,55 +37,63 @@ const Button = styled.button`
 `;
 
 const Products = () => {
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [price, setPrice] = useState('');
-    const [error, setError] = useState('');
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError('');
-        try {
-            await addDoc(collection(db, 'products'), { name, description, price: parseFloat(price) });
-            setName('');
-            setDescription('');
-            setPrice('');
-        } catch (error) {
-            setError(`Error: ${error.message}`);
-            console.error("Error adding product:", error);
-        }
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
+    try {
+      await addDoc(collection(db, 'products'), {
+        name,
+        description,
+        price: parseFloat(price)
+      });
+      setName('');
+      setDescription('');
+      setPrice('');
+      setSuccess('Product added successfully');
+    } catch (error) {
+      setError(`Error: ${error.message}`);
+      console.error("Error adding product:", error);
+    }
+  };
 
-    return (
-        <ProductsContainer>
-            <Title>Add New Product</Title>
-            <Form onSubmit={handleSubmit}>
-                <Input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Product Name"
-                    required
-                />
-                <Input
-                    type="text"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Product Description"
-                    required
-                />
-                <Input
-                    type="number"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    placeholder="Product Price"
-                    required
-                />
-                <Button type="submit">Add Product</Button>
-            </Form>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-        </ProductsContainer>
-    );
+  return (
+    <ProductsContainer>
+      <Title>Add New Product</Title>
+      <Form onSubmit={handleSubmit}>
+        <Input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Product Name"
+          required
+        />
+        <Input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Product Description"
+          required
+        />
+        <Input
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          placeholder="Product Price"
+          required
+        />
+        <Button type="submit">Add Product</Button>
+      </Form>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {success && <p style={{ color: 'green' }}>{success}</p>}
+    </ProductsContainer>
+  );
 };
 
 export default Products;
