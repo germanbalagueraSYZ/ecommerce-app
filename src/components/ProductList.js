@@ -4,30 +4,30 @@ import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import styled from 'styled-components';
 
 const ProductsContainer = styled.div`
-  padding: 20px;
+    padding: 20px;
 `;
 
 const Product = styled.div`
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin: 10px 0;
-  border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 4px;
 `;
 
 const Title = styled.h2`
-  color: #333;
+    color: #333;
 `;
 
 const Button = styled.button`
-  background-color: #d9534f;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 4px;
-  &:hover {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    &:hover {
     background-color: #c9302c;
-  }
+    }
 `;
 
 const ProductList = () => {
